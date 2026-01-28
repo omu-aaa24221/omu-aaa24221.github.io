@@ -63,7 +63,7 @@
           '<a href="https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-P29-v2_0.html">国土数値情報 - 学校データ</a>',
             );
             
-            // 大阪府 避難所 GeoJSON
+           // 大阪府 避難所 GeoJSON
 fetch('./p20-1227.geojson')
 .then(res => res.json())
 .then(json => {
@@ -71,15 +71,16 @@ fetch('./p20-1227.geojson')
   const shelterLayer = L.geoJSON(json, {
     style: function(){
       return {
-        weight: 1
+        weight: 1,
+        fillOpacity: 0.4
       };
     },
     onEachFeature: function(feature, layer){
       const p = feature.properties;
 
       layer.bindPopup(
-        "避難所名：" + p.P20_004 + "<br>" +
-        "住所：" + p.P20_007
+        "避難所名：" + p["名称"] + "<br>" +
+        "住所：" + p["住所"]
       );
     }
   });
@@ -87,6 +88,7 @@ fetch('./p20-1227.geojson')
   shelterLayer.addTo(map);
 
 });
+
 
 
 
