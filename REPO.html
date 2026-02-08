@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ステージ目標金額計算</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.stage {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+}
+
+.result {
+    font-weight: bold;
+    color: blue;
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px;
+    width: 100%;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+</style>
+
+<script>
+function calculateAll() {
+    const multipliers = [3, 4.2, 4.2, 6.5, 6.4];
+
+    for (let i = 1; i <= 5; i++) {
+        const input = document.getElementById("input" + i);
+        const result = document.getElementById("result" + i);
+        const value = parseFloat(input.value);
+
+        if (!isNaN(value)) {
+            result.textContent = "→ " + (value * multipliers[i-1]).toFixed(2);
+        } else {
+            result.textContent = "";
+        }
+    }
+}
+</script>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>ステージ目標金額計算</h1>
+
+    <div class="stage">
+        1stステージ目標金額
+        <input type="number" id="input1">
+        <div class="result" id="result1"></div>
+    </div>
+
+    <div class="stage">
+        2ndステージ目標金額
+        <input type="number" id="input2">
+        <div class="result" id="result2"></div>
+    </div>
+
+    <div class="stage">
+        3rdステージ目標金額
+        <input type="number" id="input3">
+        <div class="result" id="result3"></div>
+    </div>
+
+    <div class="stage">
+        4thステージ目標金額
+        <input type="number" id="input4">
+        <div class="result" id="result4"></div>
+    </div>
+
+    <div class="stage">
+        5thステージ目標金額
+        <input type="number" id="input5">
+        <div class="result" id="result5"></div>
+    </div>
+
+    <button onclick="calculateAll()">計算</button>
+</div>
+
+</body>
+</html>
